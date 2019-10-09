@@ -1,0 +1,55 @@
+@import "skeleton-flexbox.min.css";
+@import "fonts.css";
+
+
+* {
+  font-family: 'Josefin Slab', serif;
+}
+
+p {
+  font-size: 2rem;
+  line-height: 130%;
+  text-align: left;
+}
+
+.container {
+  max-width: 80%;
+}
+
+.navbar-list {
+  display: inline;
+  list-style-type: none;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-item {
+  display: inline-block;
+  padding: 1rem;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: gray;
+  border-bottom: 1px solid transparent;
+  transition: all .5s;
+}
+
+.navbar-link:hover {
+  color: black;
+  border-color: black;
+}
+
+.navbar-dropdown-content {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  text-align: left;
+  margin-left: 0;
+}
+
+.navbar-dropdown:hover .navbar-dropdown-content {
+  display: block;
+}
