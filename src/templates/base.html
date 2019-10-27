@@ -1,6 +1,7 @@
 <!doctype html>
 <head>
   <meta charset='utf-8'>
+  <meta name="viewport" content="initial-scale=1">
   <!-- <title>{% block title %}{% endblock %}</title> -->
   <title>Mountain Adventures</title>
   <link rel="stylesheet" href="{{ base_stylesheet_path }}">
@@ -18,20 +19,16 @@
     </div>
     <div style="padding-bottom: 2rem;" class="row center-xs">
       <div class="col-xs-12">
+        {% block navbar %}
         <ul class="navbar-list">
           <li class="navbar-item">
             <a class="navbar-link" href="index.html">Home</a>
           </li>
           <li class="navbar-item">
-            <!-- <div class="navbar-dropdown"> -->
-              <a class="navbar-link" href="trips.html">Trips</a>
-              <ul class="navbar-dropdown-content">
-                <li>Lassen & Shasta - 2018</li>
-                <li>Wyoming - 2019</li>
-              </ul>
-            <!-- </div> -->
+            <a class="navbar-link" href="trips.html">Trips</a>
           </li>
         </ul>
+        {% endblock %}
       </div>
     </div>
     <div class="row center-xs">

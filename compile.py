@@ -41,15 +41,32 @@ def main(dest):
 
     # Render trips
     os.mkdir(os.path.join(dest, 'trips'))
-    for trip in glob.glob(os.path.join('src', 'templates', 'trips', '*.html')):
-        trip_template = os.path.basename(trip)
-        trip_name = os.path.splitext(trip_template)
-        template = env.get_template(os.path.join('trips', trip_template))
-        with open(os.path.join(dest, 'trips', trip_template), 'w') as f:
-            f.write(template.render(
-                base_stylesheet_path='../css/styles.css',
-                trip_stylesheet_path=f'../css/styles/{trip_name}.css')
-            )
+    for trip in glob.glob(os.path.join('src', 'templates', 'trips', '*')):
+        _render_trip(trip, env, dest)
+
+
+def _render_trip(trip, env, dest):
+    """
+    Params:
+        trip (path-like) - The path to the trip.
+        env (Jinja Environment)
+        dest (path-like) - destination path for rendered files
+    """
+    name = os.path.basename(trip)
+    os.mkdir(os.path.join(dest, 'trips', name))
+    template = env.get_template(os.path.join('trips', name, 'index.html'))
+    with open(os.path.join(dest, 'trips', name, 'index.html'), 'w') as f:
+        f.write(template.render(
+            base_stylesheet_path='../../css/styles.css',
+            trip_stylesheet_path=f'../../css/trips/{name}.css')
+        )
+
+    template = env.get_template(os.path.join('trips', name, 'gallery.html'))
+    with open(os.path.join(dest, 'trips', name, 'gallery.html'), 'w') as f:
+        f.write(template.render(
+            base_stylesheet_path='../../css/styles.css',
+            trip_stylesheet_path=f'../../css/trips/{name}.css')
+        )
 
 
 if __name__ == "__main__":

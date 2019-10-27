@@ -1,6 +1,28 @@
 @import "skeleton-flexbox.min.css";
 @import "fonts.css";
 
+/* .container { */
+/*   max-width: 80%; */
+/* } */
+
+/* @media (min-width: 400px) { */
+/*   .container { */
+/*     width: 100%; */
+/*   } */
+/* } */
+
+/* @media (max-width: 800px) { */
+/*   .container { */
+/*     width: 100%; */
+/*     max-width: 95%; */
+/*   } */
+/* } */
+
+@media only screen and (max-width: 700px) {
+  .container {
+    width: 95%;
+  }
+}
 
 * {
   font-family: 'Josefin Slab', serif;
@@ -10,10 +32,6 @@ p {
   font-size: 2rem;
   line-height: 130%;
   text-align: left;
-}
-
-.container {
-  max-width: 80%;
 }
 
 .navbar-list {
@@ -52,4 +70,44 @@ p {
 
 .navbar-dropdown:hover .navbar-dropdown-content {
   display: block;
+}
+
+.gallery-img {
+  max-width: 100%;
+}
+
+.gallery-frame {
+  cursor: pointer;
+  transition: opacity .5s;
+  margin-bottom: 12rem;
+}
+
+.gallery-frame:hover {
+  opacity: 0.7;
+}
+
+.gallery-frame:hover .gallery-img-title {
+  border-color: rgba(0, 0, 0, 0.7);
+}
+
+.gallery-img-title {
+  font-size: 1.3rem;
+  float: left;
+  border-bottom: 1px solid transparent;
+  transition: all .5s;
+}
+
+.gallery-img-date {
+  font-size: 1.3rem;
+  float: right;
+  border-bottom: 1px solid transparent;
+  transition: all .5s;
+}
+
+video.video-montage {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+    style="display: block; max-width: 100%;"
 }
