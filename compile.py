@@ -4,6 +4,7 @@ import os
 import subprocess
 
 import jinja2
+import yaml
 
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -35,10 +36,6 @@ def main(dest):
     with open(os.path.join(dest, 'index.html'), 'w') as f:
         f.write(index.render(context))
 
-    trips_index = env.get_template('trips.html')
-    with open(os.path.join(dest, 'trips.html'), 'w') as f:
-        f.write(trips_index.render(context))
-
     # Render trips
     os.mkdir(os.path.join(dest, 'trips'))
     for trip in glob.glob(os.path.join('src', 'templates', 'trips', '*')):
@@ -62,10 +59,17 @@ def _render_trip(trip, env, dest):
         )
 
     template = env.get_template(os.path.join('trips', name, 'gallery.html'))
+    # Parse gallery.yaml file
+    with open(os.path.join(trip, 'gallery.yaml')) as f:
+        gallery_cfg = yaml.safe_load(f)
+
     with open(os.path.join(dest, 'trips', name, 'gallery.html'), 'w') as f:
-        f.write(template.render(
-            base_stylesheet_path='../../css/styles.css',
-            trip_stylesheet_path=f'../../css/trips/{name}.css')
+        f.write(
+            template.render(
+                base_stylesheet_path='../../css/styles.css',
+                trip_stylesheet_path=f'../../css/trips/{name}.css',
+                images=gallery_cfg['images']
+            ),
         )
 
 

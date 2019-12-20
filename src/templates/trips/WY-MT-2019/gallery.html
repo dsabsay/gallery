@@ -1,35 +1,51 @@
 {% extends "base.html" %}
 
-{% block subtitle %}<h4>Wyoming - 2019</h4>{% endblock %}
+{% block subtitle %}
+<h4 class="subtitle">Wyoming - 2019</h4>
+{% endblock %}
 {% block navbar %}
 <ul class="navbar-list">
   <li class="navbar-item">
-    <a class="navbar-link" href="index.html">Home</a>
+    <a class="navbar-link" href="../../index.html"> < Home</a>
   </li>
   <li class="navbar-item">
+    <a class="navbar-link" href="index.html">Mélange</a>
+  </li>
+  <li class="navbar-item navbar-item-current">
     <a class="navbar-link" href="gallery.html">Gallery</a>
   </li>
 </ul>
 {% endblock %}
 {% block content %}
 <div class="container">
-  <div class="row center-xs gallery-frame">
-    <div class="col-xs-12">
-      <img class="gallery-img"
-           src="../../images/IMG_1339.jpg"
-      >
-     <span class="gallery-img-title">View from Signal Mountain</span>
-      <span class="gallery-img-date">Oct. 12, '19</span>
+  {% for image in images %}
+    <div class="row center-xs gallery-frame">
+      <div class="col-xs-12">
+        <img class="gallery-img"
+             src="../../images/{{ image.src }}"
+        >
+        <span class="gallery-img-title"> {{ image.title }} </span>
+        <span class="gallery-img-date"> {{ image.date }} </span>
+      </div>
     </div>
-  </div>
-  <div class="row center-xs gallery-frame">
-    <div class="col-xs-12">
-      <img class="gallery-img"
-           src="../../images/Ultralight_Snapseed.JPG"
-      >
-     <span class="gallery-img-title">Thermal Bath</span>
-      <span class="gallery-img-date">Oct. 7, '19</span>
-    </div>
-  </div>
+  {% endfor %}
+  <!-- <div class="row center-xs gallery-frame"> -->
+  <!--   <div class="col-xs-12"> -->
+  <!--     <img class="gallery-img" -->
+  <!--          src="../../images/IMG_1339.jpg" -->
+  <!--     > -->
+  <!--    <span class="gallery-img-title">View from Signal Mountain</span> -->
+  <!--     <span class="gallery-img-date">Oct. 12, '19</span> -->
+  <!--   </div> -->
+  <!-- </div> -->
+  <!-- <div class="row center-xs gallery-frame"> -->
+  <!--   <div class="col-xs-12"> -->
+  <!--     <img class="gallery-img" -->
+  <!--          src="../../images/Ultralight_Snapseed.JPG" -->
+  <!--     > -->
+  <!--    <span class="gallery-img-title">Thermal Bath</span> -->
+  <!--     <span class="gallery-img-date">Oct. 7, '19</span> -->
+  <!--   </div> -->
+  <!-- </div> -->
 </div>
 {% endblock %}
