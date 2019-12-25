@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block subtitle %}
-<h4 class="subtitle">Wyoming - 2019</h4>
+<h4 class="subtitle">Wyoming & Montana - 2019</h4>
 {% endblock %}
 {% block navbar %}
 <ul class="navbar-list">
@@ -19,6 +19,7 @@
 {% block content %}
 <div class="container">
   {% for image in images %}
+  <a href="./loupe/{{ image.title | e}}.html">
     <div class="row center-xs gallery-frame">
       <div class="col-xs-12">
         <img class="gallery-img"
@@ -28,6 +29,7 @@
         <span class="gallery-img-date"> {{ image.date }} </span>
       </div>
     </div>
+  </a>
   {% endfor %}
   <!-- <div class="row center-xs gallery-frame"> -->
   <!--   <div class="col-xs-12"> -->

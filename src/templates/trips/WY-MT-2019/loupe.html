@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block sig_header %}
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row center-xs gallery-frame">
+    <div class="col-xs-1 loupe-arrow">
+      <a class="loupe-arrow-link {{ "loupe-arrow-link-disabled" if not prev_img}}" href="{{ "./" + prev_img.title | e + ".html" if prev_img else "#"}}"><</a>
+    </div>
+    <div class="col-xs-10">
+      <img class="gallery-img"
+           src="../../../images/{{ image.src }}"
+      >
+      <span class="gallery-img-title"> {{ image.title }} </span>
+      <span class="gallery-img-date"> {{ image.date }} </span>
+    </div>
+    <div class="col-xs-1 loupe-arrow">
+      <a class="loupe-arrow-link {{ "loupe-arrow-link-disabled" if not next_img}}" href="{{ "./" + next_img.title | e + ".html" if next_img else "#"}}">></a>
+    </div>
+  </div>
+</div>
+<a href="../gallery.html">Back</a>
+{% endblock %}

@@ -72,6 +72,33 @@ def _render_trip(trip, env, dest):
             ),
         )
 
+    # Render loupe pages
+    loupe_template = env.get_template(os.path.join('trips', name, 'loupe.html'))
+    for i in range(len(gallery_cfg['images'])):
+        img = gallery_cfg['images'][i]
+        if i + 1 < len(gallery_cfg['images']):
+            next_img = gallery_cfg['images'][i+1]
+        else:
+            next_img = None
+        if i > 0:
+            prev_img = gallery_cfg['images'][i-1]
+        else:
+            prev_img = None
+        try:
+            os.mkdir(os.path.join(dest, 'trips', name, 'loupe'))
+        except FileExistsError as e:
+            pass  # Continue as normal of directory already exists
+        with open(os.path.join(dest, 'trips', name, 'loupe', img['title'] + '.html'), 'w') as f:
+            f.write(
+                loupe_template.render(
+                    base_stylesheet_path='../../../css/styles.css',
+                    trip_stylesheet_path=f'../../../css/trips/{name}.css',
+                    image=img,
+                    next_img=next_img,
+                    prev_img=prev_img
+                )
+            )
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build the gallery.")
