@@ -14,3 +14,13 @@ Or do the same thing but modify files in place:
 This does a decent job of compressing PNGs (only tested on a stylized graphic):
 
     pngquant -o out.png teton_splash_resized.png  --force --quality=0-20
+
+## CSS
+
+### Why `height` needs to be set on parents for `max-height` to do the sensible thing in child elements
+
+Basically, `max-height` as a percentage is a percentage of the parent's _actual_ height (not max-height).
+If the parent has set only `max-height` and not `height`, `max-height` of the child becomes `none`,
+which allows it to be as tall as possible.
+
+https://stackoverflow.com/a/14263416
