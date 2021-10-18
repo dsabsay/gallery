@@ -10,39 +10,41 @@
   {% endif %}
 </head>
 <body>
-  <div class="container">
-    <div class="row center-xs">
-      <div class="col-xs-12">
-        <!-- <h1 style="text-align: center; padding-top: 4rem; padding-bottom: 3rem; font-family: 'Noticia Text'">Mountain Adventures</h1> -->
-        {% block sig_header %}
-          <img src="../../images/sig.png"
-               style="width: 35%; padding-left: 5%;">
-        {% endblock %}
-        {% block subtitle %}{% endblock %}
+    <div class="container" style="display: flex; flex-direction: column; height: 100vh; width: 100vw;">
+        <div class="container" {% if fullscreen %}style="width: 100%; height: 100%;"{% endif %}>
+        <div class="row center-xs" {% if fullscreen %}style="height: 0%;"{% endif %}>
+          <div class="col-xs-12">
+            <!-- <h1 style="text-align: center; padding-top: 4rem; padding-bottom: 3rem; font-family: 'Noticia Text'">Mountain Adventures</h1> -->
+            {% block sig_header %}
+              <img src="/images/sig.png"
+                   style="width: 35%; padding-left: 5%;">
+            {% endblock %}
+            {% block subtitle %}{% endblock %}
+          </div>
+        </div>
+        <div style="padding-bottom: 2rem;" class="row center-xs">
+          <div class="col-xs-12">
+            {% block navbar %}
+            <ul class="navbar-list">
+              <li class="navbar-item">
+                <a class="navbar-link" href="index.html">Home</a>
+              </li>
+            </ul>
+            {% endblock %}
+          </div>
+        </div>
+        <div class="row center-xs" {% if fullscreen %}style="height: 90%;"{% endif %}>
+          <div class="col-xs-12" {% if fullscreen %}style="height: 90%;"{% endif %}>
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+        <div style="padding-top: 3rem;" class="row center-xs" {% if fullscreen %}style="height: 10%;"{% endif %} >
+          <div class="col-xs-12">
+            <footer>
+              <p style="text-align: center; color: gray; font-size: 1rem;">&copy 2019 Daniel Sabsay</p>
+            </footer>
+          </div>
+        </div>
       </div>
-    </div>
-    <div style="padding-bottom: 2rem;" class="row center-xs">
-      <div class="col-xs-12">
-        {% block navbar %}
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <a class="navbar-link" href="index.html">Home</a>
-          </li>
-        </ul>
-        {% endblock %}
-      </div>
-    </div>
-    <div class="row center-xs">
-      <div class="col-xs-12">
-        {% block content %}{% endblock %}
-      </div>
-    </div>
-    <div style="padding-top: 3rem;" class="row center-xs">
-      <div class="col-xs-12">
-        <footer>
-          <p style="text-align: center; color: gray; font-size: 1rem;">&copy 2019 Daniel Sabsay</p>
-        </footer>
-      </div>
-    </div>
   </div>
 </body>

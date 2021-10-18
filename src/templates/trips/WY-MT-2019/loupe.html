@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set fullscreen = True %}
 
 {% block sig_header %}
 {% endblock %}
@@ -7,22 +8,26 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row center-xs gallery-frame">
-    <div class="col-xs-1 loupe-arrow">
-      <a class="loupe-arrow-link {{ "loupe-arrow-link-disabled" if not prev_img}}" href="{{ "./" + prev_img.title | e + ".html" if prev_img else "#"}}"><</a>
+
+    <div class="container" style="width: 100%; height: 100%;">
+      <div class="row center-xs gallery-frame" style="height: 100%;">
+        <div class="col-xs-1 loupe-arrow" style="height: 100%;">
+          <a class="loupe-arrow-link {{ "loupe-arrow-link-disabled" if not prev_img}}" href="{{ "./" + prev_img.title | e + ".html" if prev_img else "#"}}"><</a>
+        </div>
+        <div class="col-xs-10" style="height: 100%;">
+          <img class="gallery-img"
+               src="../../../images/{{ image.src }}"
+               style="max-height: 95%;"
+          >
+          <div style="max-height: 5%;">
+              <span class="gallery-img-title" style="float: none; text-align: center; margin: auto;"> {{ image.title }}  -  {{ image.date }} </span>
+          </div>
+        </div>
+        <div class="col-xs-1 loupe-arrow">
+          <a class="loupe-arrow-link {{ "loupe-arrow-link-disabled" if not next_img}}" href="{{ "./" + next_img.title | e + ".html" if next_img else "#"}}">></a>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-10">
-      <img class="gallery-img"
-           src="../../../images/{{ image.src }}"
-      >
-      <span class="gallery-img-title"> {{ image.title }} </span>
-      <span class="gallery-img-date"> {{ image.date }} </span>
-    </div>
-    <div class="col-xs-1 loupe-arrow">
-      <a class="loupe-arrow-link {{ "loupe-arrow-link-disabled" if not next_img}}" href="{{ "./" + next_img.title | e + ".html" if next_img else "#"}}">></a>
-    </div>
-  </div>
-</div>
-<a href="../gallery.html">Back</a>
+    <a href="../gallery.html">Back</a>
+
 {% endblock %}
